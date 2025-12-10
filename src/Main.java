@@ -1,6 +1,8 @@
 public class Main{
     public static void main(String[] args){
-        Event event1=new Event("Team meeting","Main office","17th January at 15:00");
-        event1.displayInfo("Team meeting","Main office","17th January at 15:00");
+        Event event1=new Event("K-pop concert","Main office","17th January at 15:00");
+        Participant participant1=new Participant("Oralbai Zhanat",16,"ozhanat2009@gmail.com");
+        EventManager eventManager=new EventManager(event1,participant1,"vip");
+        eventManager.displayRegistrations();
     }
 }

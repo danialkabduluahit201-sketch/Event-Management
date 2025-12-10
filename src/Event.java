@@ -9,25 +9,25 @@ public class Event {
         this.location=location;
         this.date_time=date_time;
     }
-    public String getName(String name){
+    public String getName(){
         return name;
     }
     public void setName(String name){
         this.name=name;
     }
-    public String getLocation(String location){
+    public String getLocation(){
         return location;
     }
     public void setLocation(String location){
         this.location=location;
     }
-    public String getDate_time(String date_time){
+    public String getDate_time(){
         return date_time;
     }
     public void setDate_time(String date_time){
         this.date_time=date_time;
     }
     public void displayInfo(String name,String location,String date_time){
-        System.out.println("Event:"+name+"\n"+"Date and Time: "+date_time+"\n"+"Location: "+location);
+        System.out.println("Event: "+name+"\n"+"Date and Time: "+date_time+"\n"+"Location: "+location);
     }
 }
