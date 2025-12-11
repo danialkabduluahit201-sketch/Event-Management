@@ -1,9 +1,14 @@
-
 public class Event {
     private String name;
     private String location;
     private String date_time;
+    private String description;
     public Event(String name,String location,String date_time){
+        this.name=name;
+        this.location=location;
+        this.date_time=date_time;
+    }
+    public Event(String name,String location,String date_time,String desctiption){
         this.name=name;
         this.location=location;
         this.date_time=date_time;
@@ -28,5 +33,9 @@ public class Event {
     }
     public void displayInfo(String name,String location,String date_time){
         System.out.println("Event: "+name+"\n"+"Date and Time: "+date_time+"\n"+"Location: "+location);
+    }
+    public void displayInfo(String name,String location,String date_time,String description){
+        System.out.println("Event: "+name+"\n"+"Date and Time: "+date_time+"\n"+"Location: "+location+"\n"+"Description:" +
+                description);
     }
 }
