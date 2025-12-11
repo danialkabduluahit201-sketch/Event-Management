@@ -25,7 +25,7 @@ public class Participant {
     public void setEmail(String email){
         this.email=email;
     }
-    public void displayInfo(String full_name,int age,String setEmail){
+    public void displayInfo(){
         System.out.println("Full name: "+full_name+"\n"+"Age: "+age+"\n"+"Email: "+email);
     }
 }

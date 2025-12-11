@@ -10,11 +10,6 @@ public class EventManager {
         this.ticket_type=ticket_type;
         registrationId=nextRegistrationId++;
     }
-    public EventManager(Event event,Participant participant){
-        this.event=event;
-        this.participant=participant;
-        registrationId=nextRegistrationId++;
-    }
     public Event getEvent() {
         return event;
     }

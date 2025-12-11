@@ -34,7 +34,7 @@ public class Event {
     public void displayInfo(String name,String location,String date_time){
         System.out.println("Event: "+name+"\n"+"Date and Time: "+date_time+"\n"+"Location: "+location);
     }
-    public void displayInfo(String name,String location,String date_time,String description){
+    public void displayInfo(){
         System.out.println("Event: "+name+"\n"+"Date and Time: "+date_time+"\n"+"Location: "+location+"\n"+"Description:" +
                 description);
     }

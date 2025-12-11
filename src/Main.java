@@ -7,7 +7,10 @@ public class Main{
         if(event1.equals(event2)) System.out.println("They are equal"); //comparing two events
         else System.out.println("They are not equal");
         EventManager eventmanager1=new EventManager(event1,participant1,"vip");
-        EventManager eventmanager2=new EventManager(event2,participant2);
+        EventManager eventmanager2=new EventManager(event2,participant2,"standard");
         if(eventmanager1.registrationId==eventmanager2.registrationId);
-        else System.out.println("They are not equal");    }
+        else System.out.println("They are not equal");
+        eventmanager1.displayRegistrations();
+        eventmanager2.displayRegistrations();
+    }
 }
