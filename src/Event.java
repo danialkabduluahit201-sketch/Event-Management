@@ -1,4 +1,3 @@
-import java.sql.SQLOutput;
 
 public class Event {
     private String name;
