@@ -3,7 +3,7 @@ public class EventManager {
     private Participant participant;
     private String ticket_type;
     private static int nextRegistrationId=1;
-    public int registrationId;
+    private int registrationId;
     public EventManager(Event event,Participant participant,String ticket_type){
         this.event=event;
         this.participant=participant;
