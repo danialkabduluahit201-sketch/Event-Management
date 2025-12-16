@@ -31,4 +31,13 @@ public class EventManager {
     public void displayRegistrations(){
         System.out.println("Registration #"+registrationId+"-"+participant.getFull_name()+" registered for "+event.getName()+" with "+ticket_type+ " ticket");
     }
+    public static void CompareEvents(Event e1,Event e2){
+        if(e1.getName().equals(e2.getName()))
+            System.out.println("Events have the same name");
+        else System.out.println("The name of two events differ");
+    }
+    public static void CompareParticipants(Participant p1,Participant p2){
+        if(p1.getFull_name().equals(p2.getFull_name())) System.out.println("This is the same client");
+        else System.out.println("Other person");
+    }
 }

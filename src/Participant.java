@@ -1,8 +1,10 @@
 public class Participant {
+    private int participant_id;
     private String full_name;
     private int age;
     private String email;
-    public Participant(String full_name,int age,String email){
+    public Participant(int participant_id,String full_name,int age,String email){
+        this.participant_id=participant_id;
         this.full_name=full_name;
         this.age=age;
         this.email=email;
@@ -13,9 +15,7 @@ public class Participant {
     public void setFull_name(String full_name){
         this.full_name=full_name;
     }
-    public int getAge(){
-        return age;
-    }
+    public int getAge(){return age;}
     public void setAge(int age){
         this.age=age;
     }
@@ -26,6 +26,6 @@ public class Participant {
         this.email=email;
     }
     public void displayInfo(){
-        System.out.println("Full name: "+full_name+"\n"+"Age: "+age+"\n"+"Email: "+email);
+        System.out.println("ID: "+participant_id+"\n"+full_name+"\n"+"Age: "+age+"\n"+"Email: "+email);
     }
 }
