@@ -8,7 +8,7 @@ public class EventManager {
         this.event=event;
         this.participant=participant;
         this.ticket_type=ticket_type;
-        registrationId=nextRegistrationId++;
+        this.registrationId=nextRegistrationId++;
     }
     public Event getEvent() {
         return event;
