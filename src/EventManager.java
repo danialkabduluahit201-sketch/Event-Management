@@ -31,7 +31,7 @@ public class EventManager {
     public void displayRegistrations(){
         System.out.println("Registration #"+registrationId+"-"+participant.getFull_name()+" registered for "+event.getName()+" with "+ticket_type+ " ticket");
     }
-    public static void CompareEvents(Event e1,Event e2){
+    public static void CompareEvents(Event e1, Event e2){
         if(e1.getName().equals(e2.getName()))
             System.out.println("Events have the same name");
         else System.out.println("The name of two events differ");

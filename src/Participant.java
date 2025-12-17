@@ -1,10 +1,11 @@
 public class Participant {
-    private int participant_id;
     private String full_name;
     private int age;
     private String email;
-    public Participant(int participant_id,String full_name,int age,String email){
-        this.participant_id=participant_id;
+    private static int next_participant=1;
+    private int participant_id;
+    public Participant(String full_name,int age,String email){
+        this.participant_id=next_participant++;
         this.full_name=full_name;
         this.age=age;
         this.email=email;
