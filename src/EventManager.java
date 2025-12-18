@@ -37,7 +37,7 @@ public class EventManager {
         else System.out.println("The name of two events differ");
     }
     public static void CompareParticipants(Participant p1,Participant p2){
-        if(p1.getFull_name().equals(p2.getFull_name())) System.out.println("This is the same client");
+        if(p1.getEmail().equals(p2.getEmail())) System.out.println("This is the same client");
         else System.out.println("Other person");
     }
 }

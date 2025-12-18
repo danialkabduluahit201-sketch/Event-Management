@@ -33,7 +33,7 @@ public class Event {
         this.date_time=date_time;
     }
     public int getCounter(){return counter;}
-    public void setCounter(){this.counter=counter;}
+    public void setCounter(int counter){this.counter=counter;}
     public Participant getParticipant(int i){
         return participants[i];
     }
@@ -44,7 +44,7 @@ public class Event {
         if(counter<participants.length){
             participants[counter]=p;
             counter++;
-            System.out.println(p.getFull_name()+" registered successfully");
+            System.out.println(p.getFull_name()+" registered successfully!");
         }
         else System.out.println("The event is full");
     }
