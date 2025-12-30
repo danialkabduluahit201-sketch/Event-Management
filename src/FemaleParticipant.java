@@ -1,0 +1,22 @@
+public class FemaleParticipant extends Participant{
+    private String Tshirt_size;
+    public FemaleParticipant(String full_name,int age, String email,String Tshirt_size){
+        super(full_name,age,email);
+        this.Tshirt_size=Tshirt_size;
+    }
+    public void setSize(String Tshirt_size){
+        this.Tshirt_size=Tshirt_size;
+    }
+    public String getTshirt_size(){
+        return Tshirt_size;
+    }
+    @Override
+    public String getGender(){
+        return "Female";
+    }
+    @Override
+    public void displayDetailedInfo(){
+        displayInfo();
+        System.out.println("T-shirt size: "+Tshirt_size);
+    }
+}

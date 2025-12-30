@@ -38,8 +38,19 @@ public class Main {
                 String email=sc.nextLine();
                 System.out.println("Ticket type: ");
                 String ticket_type=sc.nextLine();
-
-                Participant p=new Participant(full_name,age,email);
+                System.out.println("Gender (M or F");
+                String gender=sc.nextLine();
+                Participant p;
+                if(gender.equalsIgnoreCase("M")) {
+                    System.out.println("T-shirt size: ");
+                    String Tshirt_size=sc.nextLine();
+                    p=new MaleParticipant(full_name,age,email,Tshirt_size);
+                }
+                else {
+                    System.out.println("T-shirt size: ");
+                    String Tshirt_size = sc.nextLine();
+                    p = new FemaleParticipant(full_name, age, email, Tshirt_size);
+                }
                 events[i].addParticipant(p);
                 EventManager registration=new EventManager(events[i],p,ticket_type);
                 registrations[registration_count]=registration;

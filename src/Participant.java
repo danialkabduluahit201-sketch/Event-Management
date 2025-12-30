@@ -1,4 +1,4 @@
-public class Participant {
+public abstract class Participant {
     private String full_name;
     private int age;
     private String email;
@@ -26,6 +26,8 @@ public class Participant {
     public void setEmail(String email){
         this.email=email;
     }
+    public abstract String getGender();
+    public abstract void displayDetailedInfo();
     public void displayInfo(){
         System.out.println("ID: "+participant_id+"\n"+full_name+"\n"+"Age: "+age+"\n"+"Email: "+email);
     }

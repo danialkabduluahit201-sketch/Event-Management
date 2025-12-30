@@ -36,8 +36,10 @@ public class EventManager {
             System.out.println("Events have the same name");
         else System.out.println("The name of two events differ");
     }
-    public static void CompareParticipants(Participant p1,Participant p2){
-        if(p1.getEmail().equals(p2.getEmail())) System.out.println("This is the same client");
-        else System.out.println("Other person");
+   public static void CompareParticipants(Participant p1,Participant p2){
+        if(p1.getEmail().equals(p2.getEmail())){
+            System.out.println("This is the same person");
+        }
+        else System.out.println("Not the same person");
     }
 }
