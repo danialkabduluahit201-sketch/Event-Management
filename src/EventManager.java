@@ -42,4 +42,22 @@ public class EventManager {
         }
         else System.out.println("Not the same person");
     }
+    @Override
+    public String toString() {
+        return "Registration{id=" + registrationId + ", participant=" + participant.getFull_name() +
+                ", event=" + event.getName() + ", ticket='" + ticket_type + "'}";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        EventManager that = (EventManager) obj;
+        return registrationId == that.registrationId;
+    }
+
+    @Override
+    public int hashCode() {
+        return Integer.hashCode(registrationId);
+    }
 }

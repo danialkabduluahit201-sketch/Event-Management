@@ -49,6 +49,24 @@ public class Event {
         else System.out.println("The event is full");
     }
 
+    @Override
+    public String toString() {
+        return "Event{id=" + event_id + ", name='" + name + "', location='" + location +
+                "', dateTime='" + date_time + "', participants=" + counter + "/" + participants.length + "}";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Event event = (Event) obj;
+        return event_id == event.event_id; // Events are equal if they have same ID
+    }
+
+    @Override
+    public int hashCode() {
+        return Integer.hashCode(event_id);
+    }
     public void displayParticipants() {
         if (counter == 0) System.out.println("No participant registered");
         else {

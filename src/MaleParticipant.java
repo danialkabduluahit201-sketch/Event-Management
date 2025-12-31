@@ -19,4 +19,9 @@ public class MaleParticipant extends Participant{
         displayInfo();
         System.out.println("T-shirt size: "+Tshirt_size);
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + "T-shirt size" + Tshirt_size;
+    }
 }

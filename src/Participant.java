@@ -28,6 +28,26 @@ public abstract class Participant {
     }
     public abstract String getGender();
     public abstract void displayDetailedInfo();
+
+    @Override
+    public String toString() {
+        return "Participant{id=" + participant_id + ", name='" + full_name +
+                "', age=" + age + ", email='" + email + "'}";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Participant that = (Participant) obj;
+        return email.equalsIgnoreCase(that.email); // Same email = same person
+    }
+
+    @Override
+    public int hashCode() {
+        return email.toLowerCase().hashCode();
+    }
+
     public void displayInfo(){
         System.out.println("ID: "+participant_id+"\n"+full_name+"\n"+"Age: "+age+"\n"+"Email: "+email);
     }
