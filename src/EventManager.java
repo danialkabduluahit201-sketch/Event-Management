@@ -60,7 +60,7 @@ public class EventManager {
     public int hashCode() {
         return Integer.hashCode(registrationId);
     }
-    public static Event searchEventByName(Event[] events, int n, String name) {
+    /*public static Event searchEventByName(Event[] events, int n, String name) {
         for (int i = 0; i < n; i++) {
             if (events[i].getName().equalsIgnoreCase(name)) {
                 return events[i];
@@ -88,5 +88,5 @@ public class EventManager {
                 }
             }
         }
+     */
     }
-}
