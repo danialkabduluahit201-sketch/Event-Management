@@ -60,4 +60,33 @@ public class EventManager {
     public int hashCode() {
         return Integer.hashCode(registrationId);
     }
+    public static Event searchEventByName(Event[] events, int n, String name) {
+        for (int i = 0; i < n; i++) {
+            if (events[i].getName().equalsIgnoreCase(name)) {
+                return events[i];
+            }
+        }
+        return null;
+    }
+    public static void filterParticipantsByGender(Event event, String gender) {
+        for (int i = 0; i < event.getCounter(); i++) {
+            Participant p = event.getParticipant(i);
+            if (p.getGender().equalsIgnoreCase(gender)) {
+                p.displayInfo();
+            }
+        }
+    }
+    public static void sortParticipantsByAge(Event event) {
+        for (int i = 0; i < event.getCounter() - 1; i++) {
+            for (int j = 0; j < event.getCounter() - i - 1; j++) {
+                if (event.getParticipant(j).getAge() >
+                        event.getParticipant(j + 1).getAge()) {
+
+                    Participant temp = event.getParticipant(j);
+                    event.setParticipant(j, event.getParticipant(j + 1));
+                    event.setParticipant(j + 1, temp);
+                }
+            }
+        }
+    }
 }

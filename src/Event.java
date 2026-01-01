@@ -40,6 +40,12 @@ public class Event {
     public void setParticipant(int i,Participant participant){
         this.participants[i]=participant;
     }
+    public int getEventId() {
+        return event_id;
+    }
+    public int getMaxParticipants() {
+        return participants.length;
+    }
     public void addParticipant(Participant p){
         if(counter<participants.length){
             participants[counter]=p;

@@ -57,7 +57,6 @@ public class Main {
                 registration_count++;
             }
         }
-        sc.close();
 
             for (int i = 0; i < n; i++) {
                 events[i].displayInfo();
