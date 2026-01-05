@@ -1,3 +1,5 @@
+package com.eventmanagement;
+
 public abstract class Participant {
     private String full_name;
     private int age;
@@ -31,7 +33,7 @@ public abstract class Participant {
 
     @Override
     public String toString() {
-        return "Participant{id=" + participant_id + ", name='" + full_name +
+        return "com.eventmanagement.Participant{id=" + participant_id + ", name='" + full_name +
                 "', age=" + age + ", email='" + email + "'}";
     }
 

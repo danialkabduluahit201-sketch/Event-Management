@@ -1,4 +1,6 @@
-public class MaleParticipant extends Participant{
+package com.eventmanagement;
+
+public class MaleParticipant extends Participant {
     private String Tshirt_size;
     public MaleParticipant(String full_name,int age,String email,String Tshirt_size){
         super(full_name, age, email);

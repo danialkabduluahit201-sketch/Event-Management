@@ -1,3 +1,4 @@
+package com.eventmanagement;
 import java.util.Scanner;
 
 public class Main {
@@ -33,7 +34,7 @@ public class Main {
             sc.nextLine();
 
             for (int j = 0; j < m; j++) {
-                System.out.println("\nParticipant " + (j + 1));
+                System.out.println("\ncom.eventmanagement.Participant " + (j + 1));
                 System.out.print("Enter full name: ");
                 String full_name = sc.nextLine();
                 System.out.print("Age: ");

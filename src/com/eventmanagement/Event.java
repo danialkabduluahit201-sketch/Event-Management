@@ -1,3 +1,4 @@
+package com.eventmanagement;
 public class Event {
     private String name;
     private String location;

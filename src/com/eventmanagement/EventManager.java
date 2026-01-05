@@ -1,10 +1,12 @@
+package com.eventmanagement;
+
 public class EventManager {
     private Event event;
     private Participant participant;
     private String ticket_type;
     private static int nextRegistrationId=1;
     private int registrationId;
-    public EventManager(Event event,Participant participant,String ticket_type){
+    public EventManager(Event event, Participant participant, String ticket_type){
         this.event=event;
         this.participant=participant;
         this.ticket_type=ticket_type;
@@ -36,7 +38,7 @@ public class EventManager {
             System.out.println("Events have the same name");
         else System.out.println("The name of two events differ");
     }
-   public static void CompareParticipants(Participant p1,Participant p2){
+   public static void CompareParticipants(Participant p1, Participant p2){
         if(p1.getEmail().equals(p2.getEmail())){
             System.out.println("This is the same person");
         }
@@ -60,33 +62,4 @@ public class EventManager {
     public int hashCode() {
         return Integer.hashCode(registrationId);
     }
-    /*public static Event searchEventByName(Event[] events, int n, String name) {
-        for (int i = 0; i < n; i++) {
-            if (events[i].getName().equalsIgnoreCase(name)) {
-                return events[i];
-            }
-        }
-        return null;
-    }
-    public static void filterParticipantsByGender(Event event, String gender) {
-        for (int i = 0; i < event.getCounter(); i++) {
-            Participant p = event.getParticipant(i);
-            if (p.getGender().equalsIgnoreCase(gender)) {
-                p.displayInfo();
-            }
-        }
-    }
-    public static void sortParticipantsByAge(Event event) {
-        for (int i = 0; i < event.getCounter() - 1; i++) {
-            for (int j = 0; j < event.getCounter() - i - 1; j++) {
-                if (event.getParticipant(j).getAge() >
-                        event.getParticipant(j + 1).getAge()) {
-
-                    Participant temp = event.getParticipant(j);
-                    event.setParticipant(j, event.getParticipant(j + 1));
-                    event.setParticipant(j + 1, temp);
-                }
-            }
-        }
-     */
     }
