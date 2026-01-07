@@ -33,7 +33,7 @@ public abstract class Participant {
 
     @Override
     public String toString() {
-        return "com.eventmanagement.Participant{id=" + participant_id + ", name='" + full_name +
+        return "Participant{id=" + participant_id + ", name='" + full_name +
                 "', age=" + age + ", email='" + email + "'}";
     }
 

@@ -1,12 +1,11 @@
 package com.eventmanagement;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class DataPool {
-    private static List<Event> allEvents = new ArrayList<>();
-    private static List<Participant> allParticipants = new ArrayList<>();
-    private static List<EventManager> allRegistrations = new ArrayList<>();
+    private static ArrayList<Event> allEvents = new ArrayList<>();
+    private static ArrayList<Participant> allParticipants = new ArrayList<>();
+    private static ArrayList<EventManager> allRegistrations = new ArrayList<>();
 
     public static void addEvent(Event event) {
         if (!allEvents.contains(event)) {
@@ -26,15 +25,15 @@ public class DataPool {
         }
     }
 
-    public static List<Event> getAllEvents() {
+    public static ArrayList<Event> getAllEvents() {
         return new ArrayList<>(allEvents);
     }
 
-    public static List<Participant> getAllParticipants() {
+    public static ArrayList<Participant> getAllParticipants() {
         return new ArrayList<>(allParticipants);
     }
 
-    public static List<EventManager> getAllRegistrations() {
+    public static ArrayList<EventManager> getAllRegistrations() {
         return new ArrayList<>(allRegistrations);
     }
 

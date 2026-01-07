@@ -53,7 +53,6 @@ public class Main {
                     p = new MaleParticipant(full_name, age, email,Tshirt_size);
                 } else  {
                     String Tshirt_size_F=sc.nextLine();
-                    sc.nextLine();
                     p = new FemaleParticipant(full_name, age, email,Tshirt_size_F);
                 }
 
@@ -87,7 +86,7 @@ public class Main {
             System.out.println("\nEvent not found");
         }
 
-        System.out.println("\n\nFILTERING: Show Participants by Gender\n");
+        System.out.println("\nFILTERING: Show Participants by Gender\n");
         System.out.print("Enter event name: ");
         String eventName = sc.nextLine();
 
@@ -103,7 +102,7 @@ public class Main {
             System.out.println("Event not found");
         }
 
-        System.out.println("\n\nSORTING: Sort Participants by Age\n");
+        System.out.println("\nSORTING: Sort Participants by Age\n");
         System.out.print("Enter event name to sort its participants: ");
         String sortEventName = sc.nextLine();
 
@@ -120,14 +119,6 @@ public class Main {
         } else {
             System.out.println("Event not found");
         }
-
-        if (n >= 2) {
-            EventManager.CompareEvents(events[0], events[1]);
-            if (events[0].getCounter() > 0 && events[1].getCounter() > 0) {
-                EventManager.CompareParticipants(events[0].getParticipant(0), events[1].getParticipant(0));
-            }
-        }
-
         sc.close();
     }
 }
