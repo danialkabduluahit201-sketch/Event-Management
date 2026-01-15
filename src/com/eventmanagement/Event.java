@@ -58,8 +58,8 @@ public class Event {
 
     @Override
     public String toString() {
-        return "Event{id=" + event_id + ", name='" + name + "', location='" + location +
-                "', dateTime='" + date_time + "', participants=" + counter + "/" + participants.length + "}";
+        return "Event{id=" + event_id + ", name='" + name + ", location=" + location +
+                ", dateTime=" + date_time + ", participants=" + counter + "/" + participants.length + "}";
     }
 
     @Override

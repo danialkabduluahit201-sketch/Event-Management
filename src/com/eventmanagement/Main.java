@@ -1,9 +1,38 @@
 package com.eventmanagement;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+
+        String ConnectionURL="jdbc:postgresql://localhost:5432/Assignment(java)";
+        Connection con=null;
+        ResultSet rs=null;
+        Statement stmt=null;
+        try{
+            con= DriverManager.getConnection(ConnectionURL,"postgres","200888");
+            stmt=con.createStatement();
+            rs= stmt.executeQuery("select * from female_participants");
+            while(rs.next()) System.out.println(rs.getInt("female_id")+" "
+                    +rs.getString("first_name")
+                    +" "+rs.getString("last_name")
+                    +" "+rs.getInt("age")
+                    +" "+rs.getString("t_shirt_size"));
+        }
+        catch(Exception e){
+            System.out.println("Exception occured!");
+        } finally{
+            try{
+                con.close();
+            } catch(Exception e){
+                System.out.println("Exception occured!");
+            }
+        }
+
+        /*Scanner sc = new Scanner(System.in);
 
         System.out.println("How many events do you need?");
         int n = sc.nextInt();
@@ -34,7 +63,7 @@ public class Main {
             sc.nextLine();
 
             for (int j = 0; j < m; j++) {
-                System.out.println("\ncom.eventmanagement.Participant " + (j + 1));
+                System.out.println("Participant " + (j + 1));
                 System.out.print("Enter full name: ");
                 String full_name = sc.nextLine();
                 System.out.print("Age: ");
@@ -119,6 +148,6 @@ public class Main {
         } else {
             System.out.println("Event not found");
         }
-        sc.close();
+        sc.close();*/
     }
 }

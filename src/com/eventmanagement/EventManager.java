@@ -50,5 +50,5 @@ public class EventManager {
     @Override
     public int hashCode() {
         return Integer.hashCode(registrationId);
-    }
+        }
     }

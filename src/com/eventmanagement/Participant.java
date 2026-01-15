@@ -33,16 +33,16 @@ public abstract class Participant {
 
     @Override
     public String toString() {
-        return "Participant{id=" + participant_id + ", name='" + full_name +
-                "', age=" + age + ", email='" + email + "'}";
+        return "Participant{id=" + participant_id + ", name=" + full_name +
+                ", age=" + age + ", email=" + email + "}";
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        Participant that = (Participant) obj;
-        return email.equalsIgnoreCase(that.email); // Same email = same person
+    public boolean equals(Object obj){
+        if (this==obj) return true;
+        if (obj==null || getClass()!=obj.getClass()) return false;
+        Participant that=(Participant) obj;
+        return email.equalsIgnoreCase(that.getEmail());
     }
 
     @Override
