@@ -1,153 +1,95 @@
 package com.eventmanagement;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    private static final String DB_URL = "jdbc:postgresql://localhost:5432/Assignment(java)";
+    private static final String DB_USER = "postgres";
+    private static final String DB_PASSWORD = "200888";
 
-        String ConnectionURL="jdbc:postgresql://localhost:5432/Assignment(java)";
-        Connection con=null;
-        ResultSet rs=null;
-        Statement stmt=null;
-        try{
-            con= DriverManager.getConnection(ConnectionURL,"postgres","200888");
-            stmt=con.createStatement();
-            rs= stmt.executeQuery("select * from female_participants");
-            while(rs.next()) System.out.println(rs.getInt("female_id")+" "
-                    +rs.getString("first_name")
-                    +" "+rs.getString("last_name")
-                    +" "+rs.getInt("age")
-                    +" "+rs.getString("t_shirt_size"));
-        }
-        catch(Exception e){
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Connection con = null;
+        ResultSet rs = null;
+        Statement stmt = null;
+        try {
+            con = DriverManager.getConnection(DB_URL, "postgres", "200888");
+            stmt = con.createStatement();
+            rs = stmt.executeQuery("select * from female_participants");
+            while (rs.next()) System.out.println(rs.getInt("female_id") + " "
+                    + rs.getString("first_name")
+                    + " " + rs.getString("last_name")
+                    + " " + rs.getInt("age")
+                    + " " + rs.getString("t_shirt_size"));
+        } catch (Exception e) {
             System.out.println("Exception occured!");
-        } finally{
-            try{
+        } finally {
+            try {
                 con.close();
-            } catch(Exception e){
+            } catch (Exception e) {
                 System.out.println("Exception occured!");
             }
         }
+    }
 
-        /*Scanner sc = new Scanner(System.in);
-
-        System.out.println("How many events do you need?");
-        int n = sc.nextInt();
+    private static void addFemaleParticipantToDB(Scanner sc) {
+        System.out.print("First name: ");
+        String firstName = sc.nextLine();
+        System.out.print("Last name: ");
+        String lastName = sc.nextLine();
+        System.out.print("Age: ");
+        int age = sc.nextInt();
         sc.nextLine();
+        System.out.print("Email: ");
+        String email = sc.nextLine();
+        System.out.print("T-shirt size: ");
+        String tShirtSize = sc.nextLine();
 
-        Event[] events = new Event[n];
+        String sql = "INSERT INTO female_participants (first_name, last_name, age,t_shirt_size,email) VALUES (?, ?, ?, ?, ?)";
 
-        for (int i = 0; i < n; i++) {
-            System.out.println("\nDetails for event " + (i + 1));
-            System.out.print("Event name: ");
-            String name = sc.nextLine();
-            System.out.print("Location: ");
-            String location = sc.nextLine();
-            System.out.print("Date and time: ");
-            String date_time = sc.nextLine();
-            System.out.print("Maximum amount of participants: ");
-            int maximum_participants = sc.nextInt();
-            sc.nextLine();
+        try (Connection con = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+             PreparedStatement pstmt = con.prepareStatement(sql)) {
 
-            events[i] = new Event(name, location, date_time, maximum_participants);
-            DataPool.addEvent(events[i]);
-        }
+            pstmt.setString(1, firstName);
+            pstmt.setString(2, lastName);
+            pstmt.setInt(3, age);
+            pstmt.setString(4, tShirtSize);
+            pstmt.setString(5, email);
 
-        for (int i = 0; i < n; i++) {
-            System.out.println("\nAdd participants for " + events[i].getName());
-            System.out.print("How many participants? ");
-            int m = sc.nextInt();
-            sc.nextLine();
-
-            for (int j = 0; j < m; j++) {
-                System.out.println("Participant " + (j + 1));
-                System.out.print("Enter full name: ");
-                String full_name = sc.nextLine();
-                System.out.print("Age: ");
-                int age = sc.nextInt();
-                sc.nextLine();
-                System.out.print("Email: ");
-                String email = sc.nextLine();
-                System.out.print("Gender (M/F): ");
-                String gender = sc.nextLine();
-
-                Participant p;
-
-                if (gender.equalsIgnoreCase("M")) {
-                    System.out.print("T-shirt size: ");
-                    String Tshirt_size = sc.nextLine();
-                    p = new MaleParticipant(full_name, age, email,Tshirt_size);
-                } else  {
-                    String Tshirt_size_F=sc.nextLine();
-                    p = new FemaleParticipant(full_name, age, email,Tshirt_size_F);
-                }
-
-                System.out.print("Ticket type: ");
-                String ticket_type = sc.nextLine();
-
-                events[i].addParticipant(p);
-                DataPool.addParticipant(p);
-
-                EventManager registration = new EventManager(events[i], p, ticket_type);
-                DataPool.addRegistration(registration);
+            int rowsAffected = pstmt.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("Female participant added to database!");
             }
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
         }
+    }
 
-        System.out.println("\nDATA POOL OPERATIONS DEMONSTRATION\n");
+    private static void addMaleParticipantToDB(Scanner sc) {
+        System.out.println("First name: ");
+        String first_name = sc.nextLine();
+        System.out.println("Last name: ");
+        String last_name = sc.nextLine();
+        System.out.println("Age: ");
+        int age = sc.nextInt();
+        sc.nextLine();
+        System.out.println("T-shirt size: ");
+        String T_shirt_size = sc.nextLine();
+        System.out.println("Email: ");
+        String email=sc.nextLine();
+        String sql = "INSERT INTO male_participants (first_name,last_name,age,t_shirt_size,email) VALUES (?,?,?,?,?)";
 
-        DataPool.displayAllEvents();
-        DataPool.displayAllParticipants();
-        DataPool.displayAllRegistrations();
-
-        System.out.println("\nSEARCHING: Find Event by Name\n");
-        System.out.print("Enter event name to search: ");
-        String searchName = sc.nextLine();
-
-        Event foundEvent = DataPool.searchEventByName(events, n, searchName);
-
-        if (foundEvent != null) {
-            System.out.println("\nEvent found:");
-            System.out.println(foundEvent);
-        } else {
-            System.out.println("\nEvent not found");
+        try (Connection con = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+             PreparedStatement pstmt = con.prepareStatement(sql)) {
+            pstmt.setString(1, first_name);
+            pstmt.setString(2, last_name);
+            pstmt.setInt(3, age);
+            pstmt.setString(4, T_shirt_size);
+            pstmt.setString(5, email);
+            int rowsAffected = pstmt.executeUpdate();
+            if (rowsAffected > 0) System.out.println("Female participant added to database!");
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
         }
-
-        System.out.println("\nFILTERING: Show Participants by Gender\n");
-        System.out.print("Enter event name: ");
-        String eventName = sc.nextLine();
-
-        Event selectedEvent = DataPool.searchEventByName(events, n, eventName);
-
-        if (selectedEvent != null) {
-            System.out.print("Enter gender to filter (Male/Female): ");
-            String filterGender = sc.nextLine();
-
-            System.out.println("\nParticipants with gender: " + filterGender);
-            DataPool.filterParticipantsByGender(selectedEvent, filterGender);
-        } else {
-            System.out.println("Event not found");
-        }
-
-        System.out.println("\nSORTING: Sort Participants by Age\n");
-        System.out.print("Enter event name to sort its participants: ");
-        String sortEventName = sc.nextLine();
-
-        Event eventToSort = DataPool.searchEventByName(events, n, sortEventName);
-
-        if (eventToSort != null) {
-            System.out.println("\nParticipants BEFORE sorting:");
-            eventToSort.displayParticipants();
-
-            DataPool.sortParticipantsByAge(eventToSort);
-
-            System.out.println("\nParticipants AFTER sorting by age:");
-            eventToSort.displayParticipants();
-        } else {
-            System.out.println("Event not found");
-        }
-        sc.close();*/
     }
 }
