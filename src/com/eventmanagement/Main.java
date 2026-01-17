@@ -92,4 +92,40 @@ public class Main {
             System.out.println("Error: " + e.getMessage());
         }
     }
+    private static void viewAllFemaleParticipants(Scanner sc){
+        String sql="SELECT * FROM female_participants";
+        try(Connection con = DriverManager.getConnection(DB_URL,DB_USER,DB_PASSWORD);
+            Statement stmt = con.createStatement();
+            ResultSet rs=stmt.executeQuery(sql)) {
+            System.out.println("Female participants");
+            while(rs.next()){
+                rs.getInt("female_id");
+                rs.getString("first_name");
+                rs.getString("last_name");
+                rs.getInt("age");
+                rs.getString("t_shirt_size");
+                rs.getString("email");
+            }
+        }catch(SQLException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+    private static void viewallMaleParticipants(Scanner sc){
+        String sql="SELECT * FROM male_participants";
+        try(Connection con=DriverManager.getConnection(DB_URL,DB_USER,DB_PASSWORD);
+            Statement stmt=con.createStatement();
+            ResultSet rs=stmt.executeQuery(sql)) {
+            System.out.println("Male participants");
+            while(rs.next()){
+                rs.getInt("male_id");
+                rs.getString("first_name");
+                rs.getString("last_name");
+                rs.getInt("age");
+                rs.getString("t_shirt_size");
+                rs.getString("email");
+            }
+        }catch(SQLException e) {
+            System.out.println("Error: "+e.getMessage());
+        }
+    }
 }
