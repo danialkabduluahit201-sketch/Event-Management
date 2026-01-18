@@ -128,4 +128,78 @@ public class Main {
             System.out.println("Error: "+e.getMessage());
         }
     }
+    private static void updateParticipant(Scanner sc){
+        System.out.println("Gender (M/F): ");
+        String gender=sc.nextLine();
+        System.out.println("Participant ID");
+        int id=sc.nextInt();
+        sc.nextLine();
+        System.out.println("\nWhat to update?");
+        System.out.println("1. First Name");
+        System.out.println("2. Last Name");
+        System.out.println("3. Age");
+        System.out.println("4. Email");
+        System.out.println("5. T-Shirt Size");
+        System.out.print("Choose: ");
+        int updateChoice = sc.nextInt();
+        sc.nextLine();
+
+        String tableName = gender.equalsIgnoreCase("F") ? "female_participants" : "male_participants";
+        String idColumn = gender.equalsIgnoreCase("F") ? "female_id" : "male_id";
+        String columnToUpdate = "";
+
+        switch (updateChoice) {
+            case 1: columnToUpdate = "first_name"; break;
+            case 2: columnToUpdate = "last_name"; break;
+            case 3: columnToUpdate = "age"; break;
+            case 4: columnToUpdate = "email"; break;
+            case 5: columnToUpdate = "t_shirt_size"; break;
+            default:
+                System.out.println("Invalid choice!");
+                return;
+        }
+
+        System.out.print("Enter new value: ");
+        String newValue = sc.nextLine();
+
+        String sql = "UPDATE " + tableName + " SET " + columnToUpdate + " = ? WHERE " + idColumn + " = ?";
+
+        try (Connection con = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+             PreparedStatement pstmt = con.prepareStatement(sql)) {
+            if (updateChoice == 3) {
+                pstmt.setInt(1, Integer.parseInt(newValue));
+            } else {
+                pstmt.setString(1, newValue);
+            }
+            pstmt.setInt(2, id);
+
+            int rowsAffected = pstmt.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("Updated successfully!");
+            } else {
+                System.out.println("Participant not found!");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+    private static void deleteParticipant(Scanner sc){
+        System.out.println("Gender (M/F): ");
+        String gender=sc.nextLine();
+        System.out.println("Participant ID: ");
+        int id=sc.nextInt();
+        sc.nextLine();
+        String table_name=gender.equalsIgnoreCase("F") ? "female_participants":"male_participants";
+        String idColumn=gender.equalsIgnoreCase("F") ? "female_id":"male_id";
+        String sql=" DELETE FROM "+table_name+" WHERE "+idColumn+" = ?";
+        try(Connection con=DriverManager.getConnection(DB_URL,DB_USER,DB_PASSWORD);
+            PreparedStatement pstmt=con.prepareStatement(sql)){
+            pstmt.setInt(1,id);
+            int rowsAffected=pstmt.executeQuery();
+            String resultWORD=rowsAffected>0 ? "Participant deleted successfully!" : "No such participant";
+            System.out.println(resultWORD);
+        }catch(SQLException e){
+            System.out.println("Error: "+e.getMessage());
+        }
+    }
 }
