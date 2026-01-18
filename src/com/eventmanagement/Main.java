@@ -31,7 +31,6 @@ public class Main {
             }
         }
     }
-
     private static void addFemaleParticipantToDB(Scanner sc) {
         System.out.print("First name: ");
         String firstName = sc.nextLine();
@@ -195,11 +194,72 @@ public class Main {
         try(Connection con=DriverManager.getConnection(DB_URL,DB_USER,DB_PASSWORD);
             PreparedStatement pstmt=con.prepareStatement(sql)){
             pstmt.setInt(1,id);
-            int rowsAffected=pstmt.executeQuery();
+            int rowsAffected=pstmt.executeUpdate();
             String resultWORD=rowsAffected>0 ? "Participant deleted successfully!" : "No such participant";
             System.out.println(resultWORD);
         }catch(SQLException e){
             System.out.println("Error: "+e.getMessage());
+        }
+    }
+    private static void searchParticipantInDB(Scanner sc){
+        System.out.println("Gender (M/F): ");
+        String gender=sc.nextLine();
+        System.out.println("How many participants do you need? (1 or MORE?)");
+        int n=sc.nextInt();
+        sc.nextLine();
+        if(n>1) {
+            System.out.println("Enter the first index: ");
+            int first=sc.nextInt();
+            sc.nextLine();
+            System.out.println("Enter the last index: ");
+            int last=sc.nextInt();
+            sc.nextLine();
+            String table_name=gender.equalsIgnoreCase("F") ? "female_participants":"male_participants";
+            String IdColumn=gender.equalsIgnoreCase("F") ? "female_id":"male_id";
+            String sql="SELECT * FROM "+table_name+" WHERE "+IdColumn+" BETWEEN ? AND ? ";
+            try(Connection con=DriverManager.getConnection(DB_URL,DB_USER,DB_PASSWORD);
+                PreparedStatement pstmt=con.prepareStatement(sql)){
+                pstmt.setInt(1,first);
+                pstmt.setInt(2,last);
+                ResultSet rs=pstmt.executeQuery();
+                while(rs.next()) {
+                    System.out.println("\n=== PARTICIPANTS FOUND ===");
+                    System.out.println("ID: " + rs.getInt(IdColumn));
+                    System.out.println("Name: " + rs.getString("first_name") + " " + rs.getString("last_name"));
+                    System.out.println("Age: " + rs.getInt("age"));
+                    System.out.println("T-Shirt: " + rs.getString("t_shirt_size"));
+                    System.out.println("Email: " + rs.getString("email"));
+                }
+            } catch (SQLException e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+        }
+        else {System.out.println("Enter the Participant ID");
+            int id=sc.nextInt();
+            String tableName = gender.equalsIgnoreCase("F") ? "female_participants" : "male_participants";
+            String idColumn = gender.equalsIgnoreCase("F") ? "female_id" : "male_id";
+
+            String sql = "SELECT * FROM " + tableName + " WHERE " + idColumn + " = ?";
+
+            try (Connection con = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+                 PreparedStatement pstmt = con.prepareStatement(sql)) {
+
+                pstmt.setInt(1, id);
+                ResultSet rs = pstmt.executeQuery();
+
+                if (rs.next()) {
+                    System.out.println("\n=== PARTICIPANT FOUND ===");
+                    System.out.println("ID: " + rs.getInt(idColumn));
+                    System.out.println("Name: " + rs.getString("first_name") + " " + rs.getString("last_name"));
+                    System.out.println("Age: " + rs.getInt("age"));
+                    System.out.println("Email: " + rs.getString("email"));
+                    System.out.println("T-Shirt: " + rs.getString("t_shirt_size"));
+                } else {
+                    System.out.println("Participant not found!");
+                }
+            } catch (SQLException e) {
+                System.out.println("Error: " + e.getMessage());
+            }
         }
     }
 }
