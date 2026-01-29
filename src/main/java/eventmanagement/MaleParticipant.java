@@ -1,4 +1,4 @@
-package org.example.eventmanagement.eventmanagement;
+package eventmanagement;
 
 public class MaleParticipant extends Participant {
     private String Tshirt_size;
