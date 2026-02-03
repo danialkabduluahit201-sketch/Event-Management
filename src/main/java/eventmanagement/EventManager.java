@@ -1,6 +1,8 @@
 package eventmanagement;
 
 public class EventManager {
+    private Event event;
+    private Participant participant;
     private int registrationId;
     private int eventId;
     private int participantId;
@@ -51,4 +53,22 @@ public class EventManager {
 
     public double getPaymentAmount() { return paymentAmount; }
     public void setPaymentAmount(double paymentAmount) { this.paymentAmount = paymentAmount; }
+
+    public String toString() {
+        return "Registration{id=" + registrationId + ", participant=" + participant.getFull_name() +
+                ", event=" + event.getName() + ", ticket='" + getTicketType() + "'}";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        EventManager that = (EventManager) obj;
+        return registrationId == that.registrationId;
+    }
+
+    @Override
+    public int hashCode() {
+        return Integer.hashCode(registrationId);
+    }
 }

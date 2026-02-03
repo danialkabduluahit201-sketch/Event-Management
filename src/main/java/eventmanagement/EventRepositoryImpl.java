@@ -17,7 +17,7 @@ public class EventRepositoryImpl implements EventRepository {
     }
 
     @Override
-    public void save(Event event) {
+    public void create(Event event) {
         String sql = "INSERT INTO events (name, description, location, date_time, max_capacity, status, organizer_company) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?)";
 
@@ -44,7 +44,7 @@ public class EventRepositoryImpl implements EventRepository {
     }
 
     @Override
-    public Event findById(int id) {
+    public Event readByID(int id) {
         String sql = "SELECT e.*, COUNT(r.registration_id) as participant_count " +
                 "FROM events e " +
                 "LEFT JOIN registrations r ON e.event_id = r.event_id AND r.status != 'CANCELLED' " +
@@ -67,7 +67,7 @@ public class EventRepositoryImpl implements EventRepository {
     }
 
     @Override
-    public List<Event> findAll() {
+    public List<Event> readAll() {
         String sql = "SELECT e.*, COUNT(r.registration_id) as participant_count " +
                 "FROM events e " +
                 "LEFT JOIN registrations r ON e.event_id = r.event_id AND r.status != 'CANCELLED' " +

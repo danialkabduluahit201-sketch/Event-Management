@@ -60,4 +60,22 @@ public class Event {
     public boolean isFull() {
         return currentParticipants >= maxCapacity;
     }
+    @Override
+    public String toString() {
+        return "Event{id=" + eventId + ", name='" + name + ", location=" + location +
+                ", dateTime=" + dateTime + ", participants=" + currentParticipants  + "/" + maxCapacity + "}";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Event event = (Event) obj;
+        return eventId == event.eventId; // Events are equal if they have same ID
+    }
+
+    @Override
+    public int hashCode() {
+        return Integer.hashCode(eventId);
+    }
 }

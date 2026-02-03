@@ -17,7 +17,7 @@ public abstract class Participant {
     public String getFirstName(){
         return firstName;
     }
-    public String getLastname(){
+    public String getLastName(){
         return lastName;
     }
     public void setFirstName(String firstName){
@@ -41,6 +41,7 @@ public abstract class Participant {
     }
     public abstract String getGender();
     public abstract void displayDetailedInfo();
+    public abstract String getTShirtSize();
 
     @Override
     public String toString() {
@@ -63,5 +64,12 @@ public abstract class Participant {
 
     public void displayInfo(){
         System.out.println("ID: "+participant_id+"\n"+firstName+" "+lastName+"\n"+"Age: "+age+"\n"+"Email: "+email);
+    }
+
+    public void setParticipantId(int participantId) {
+    }
+
+    public int getParticipantId() {
+        return participant_id;
     }
 }

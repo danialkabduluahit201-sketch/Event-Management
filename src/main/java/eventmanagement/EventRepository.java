@@ -3,11 +3,11 @@ package eventmanagement;
 import java.util.List;
 
 public interface EventRepository {
-    void save(Event event);
+    void create(Event event);
 
-    Event findById(int id);
+    Event readByID(int id);
 
-    List<Event> findAll();
+    List<Event> readAll();
 
     void update(Event event);
 

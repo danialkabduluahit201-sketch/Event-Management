@@ -2,11 +2,12 @@ package eventmanagement;
 
 public class MaleParticipant extends Participant {
     private String Tshirt_size;
-    public MaleParticipant(String full_name,int age,String email,String Tshirt_size){
-        super(full_name, age, email);
+    public MaleParticipant(String firstName,String lastName,int age,String email,String Tshirt_size){
+        super(firstName,lastName, age, email);
         this.Tshirt_size=Tshirt_size;
     }
-    public String getSize(){
+    @Override
+    public String getTShirtSize(){
         return Tshirt_size;
     }
     public void setSize(){
@@ -26,4 +27,5 @@ public class MaleParticipant extends Participant {
     public String toString() {
         return super.toString() + "T-shirt size" + Tshirt_size;
     }
+
 }
