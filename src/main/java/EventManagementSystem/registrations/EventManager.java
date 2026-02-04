@@ -1,4 +1,7 @@
-package eventmanagement;
+package EventManagementSystem.registrations;
+
+import EventManagementSystem.Events.Event;
+import EventManagementSystem.Participants.Participant;
 
 public class EventManager {
     private Event event;
@@ -32,7 +35,6 @@ public class EventManager {
         }
     }
 
-    // Getters and setters
     public int getRegistrationId() { return registrationId; }
     public void setRegistrationId(int registrationId) { this.registrationId = registrationId; }
 

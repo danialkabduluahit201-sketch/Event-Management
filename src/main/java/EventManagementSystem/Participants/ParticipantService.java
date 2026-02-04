@@ -1,4 +1,4 @@
-package eventmanagement;
+package EventManagementSystem.Participants;
 
 import org.springframework.stereotype.Service;
 
@@ -16,6 +16,7 @@ public class ParticipantService {
     public Participant readById(int id){
         return participantRepository.readById(id);
     }
+    public Participant readByEmail(String email) {return participantRepository.readByEmail(email);}
     public List<Participant> readAllParticipants(){
         return participantRepository.readAll();
     }

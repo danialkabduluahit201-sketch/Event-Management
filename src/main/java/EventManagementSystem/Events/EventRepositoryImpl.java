@@ -1,4 +1,4 @@
-package eventmanagement;
+package EventManagementSystem.Events;
 
 import org.springframework.stereotype.Repository;
 import java.sql.*;

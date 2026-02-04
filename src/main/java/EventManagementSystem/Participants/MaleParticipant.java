@@ -1,10 +1,12 @@
-package eventmanagement;
+package EventManagementSystem.Participants;
 
 public class MaleParticipant extends Participant {
     private String Tshirt_size;
-    public MaleParticipant(String firstName,String lastName,int age,String email,String Tshirt_size){
+    private String gender;
+    public MaleParticipant(String firstName,String lastName,int age,String email,String gender,String Tshirt_size){
         super(firstName,lastName, age, email);
         this.Tshirt_size=Tshirt_size;
+        this.gender=gender;
     }
     @Override
     public String getTShirtSize(){
@@ -15,7 +17,7 @@ public class MaleParticipant extends Participant {
     }
     @Override
     public String getGender(){
-        return "Male";
+        return gender;
     }
     @Override
     public void displayDetailedInfo(){

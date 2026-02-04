@@ -1,17 +1,16 @@
-package eventmanagement;
+package EventManagementSystem.Events;
 
 public class Event {
     private int eventId;
     private String name;
     private String description;
     private String location;
-    private String dateTime;  // Simplified as String
+    private String dateTime;
     private int maxCapacity;
     private String status;  // "UPCOMING", "COMPLETED", "CANCELLED"
     private String organizerCompany;
     private int currentParticipants;
 
-    // Default constructor
     public Event() {
         this.status = "UPCOMING";
         this.currentParticipants = 0;

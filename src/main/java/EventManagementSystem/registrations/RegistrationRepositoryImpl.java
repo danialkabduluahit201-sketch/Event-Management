@@ -1,4 +1,4 @@
-package eventmanagement;
+package EventManagementSystem.registrations;
 
 import org.springframework.stereotype.Repository;
 
@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class RegistrationRepositoryImpl implements RegistrationRepository{
+public class RegistrationRepositoryImpl implements RegistrationRepository {
 
     private static final String DB_URL = "jdbc:postgresql://localhost:5432/EventManagement";
     private static final String DB_USER = "postgres";

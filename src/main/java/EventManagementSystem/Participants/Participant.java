@@ -1,4 +1,4 @@
-package eventmanagement;
+package EventManagementSystem.Participants;
 
 public abstract class Participant {
     private String firstName;
@@ -7,7 +7,7 @@ public abstract class Participant {
     private String email;
     private static int next_participant=1;
     private int participant_id;
-    public Participant(String firstName,String lastName,int age,String email){
+    public Participant(String firstName, String lastName, int age, String email){
         this.participant_id=next_participant++;
         this.firstName=firstName;
         this.lastName=lastName;

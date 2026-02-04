@@ -1,4 +1,4 @@
-package eventmanagement;
+package EventManagementSystem.Events;
 
 import java.util.List;
 

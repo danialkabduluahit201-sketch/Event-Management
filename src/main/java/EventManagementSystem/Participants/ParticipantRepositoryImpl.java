@@ -1,4 +1,4 @@
-package eventmanagement;
+package EventManagementSystem.Participants;
 
 import org.springframework.stereotype.Repository;
 import java.sql.*;
@@ -18,7 +18,7 @@ public class ParticipantRepositoryImpl implements ParticipantRepository {
 
     @Override
     public void createParticipant(Participant participant) {
-        String sql = "INSERT INTO participants (first_name, last_name, email, phone, age, gender, t_shirt_size) " +
+        String sql = "INSERT INTO participants (first_name, last_name, email, age,gender,t_shirt_size) " +
                 "VALUES (?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = getConnection();
@@ -135,11 +135,11 @@ public class ParticipantRepositoryImpl implements ParticipantRepository {
 
     private Participant mapResultSetToParticipant(ResultSet rs) throws SQLException {
         Participant participant = ParticipantFactory.createParticipant(
-                rs.getString("gender"),
                 rs.getString("first_name"),
                 rs.getString("last_name"),
                 rs.getInt("age"),
                 rs.getString("email"),
+                rs.getString("gender"),
                 rs.getString("t_shirt_size")
         );
         participant.setParticipantId(rs.getInt("participant_id"));
