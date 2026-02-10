@@ -8,13 +8,15 @@ public class FemaleParticipant extends Participant {
         this.Tshirt_size=TShirtSize;
         this.gender=gender;
     }
-    public void setSize(String Tshirt_size){
+    @Override
+    public void setTShirtSize(String Tshirt_size){
         this.Tshirt_size=Tshirt_size;
     }
     @Override
     public String getTShirtSize(){
         return Tshirt_size;
     }
+
     @Override
     public String getGender(){
         return gender;
@@ -27,5 +29,10 @@ public class FemaleParticipant extends Participant {
     @Override
     public String toString(){
         return super.toString()+"T-shirt size"+Tshirt_size;
+    }
+
+    @Override
+    public void setGender(String gender) {
+        this.gender=gender;
     }
 }

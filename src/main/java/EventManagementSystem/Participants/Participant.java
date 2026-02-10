@@ -5,6 +5,8 @@ public abstract class Participant {
     private String lastName;
     private int age;
     private String email;
+    private String tShirtSize;
+    private String gender;
     private static int next_participant=1;
     private int participant_id;
     public Participant(String firstName, String lastName, int age, String email){
@@ -39,9 +41,23 @@ public abstract class Participant {
     public void setEmail(String email){
         this.email=email;
     }
-    public abstract String getGender();
+
+    public String getGender(){
+        return gender;
+    }
     public abstract void displayDetailedInfo();
-    public abstract String getTShirtSize();
+
+    public  void setTShirtSize(String TShirtSize){
+        this.tShirtSize=TShirtSize;
+    }
+
+    public String getTShirtSize(){
+        return tShirtSize;
+    }
+
+    public void setGender(String gender){
+        this.gender=gender;
+    }
 
     @Override
     public String toString() {

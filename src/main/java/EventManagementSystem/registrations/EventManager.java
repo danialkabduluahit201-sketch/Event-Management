@@ -9,9 +9,9 @@ public class EventManager {
     private int registrationId;
     private int eventId;
     private int participantId;
-    private String ticketType;  // "VIP", "REGULAR", "STUDENT", "FREE"
+    private String ticketType;
     private String registrationDate;
-    private String status;  // "CONFIRMED", "CANCELLED", "ATTENDED"
+    private String status;
     private double paymentAmount;
 
     public EventManager() {

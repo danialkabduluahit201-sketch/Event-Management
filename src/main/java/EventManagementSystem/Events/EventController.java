@@ -6,6 +6,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/events")
+@CrossOrigin(origins = "*")
 public class EventController {
     private final EventService eventService;
     public EventController(EventService eventService){
@@ -17,7 +18,7 @@ public class EventController {
         return eventService.readAllEvents();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     public Event getEventById(@PathVariable int id) {
         return eventService.readEventById(id);
     }
@@ -40,5 +41,4 @@ public class EventController {
         eventService.deleteEvent(id);
         return "Event deleted successfully";
     }
-
 }

@@ -101,7 +101,7 @@ public class ParticipantRepositoryImpl implements ParticipantRepository {
     @Override
     public void update(Participant participant) {
         String sql = "UPDATE participants SET first_name = ?, last_name = ?, email = ?, " +
-                 "age = ?, t_shirt_size = ? WHERE participant_id = ?";
+                 "age = ?,gender = ?,t_shirt_size = ? WHERE participant_id = ?";
 
         try (Connection conn = getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -110,8 +110,9 @@ public class ParticipantRepositoryImpl implements ParticipantRepository {
             pstmt.setString(2, participant.getLastName());
             pstmt.setString(3, participant.getEmail());
             pstmt.setInt(4, participant.getAge());
-            pstmt.setString(5, participant.getTShirtSize());
-            pstmt.setInt(6, participant.getParticipantId());
+            pstmt.setString(5,participant.getGender());
+            pstmt.setString(6, participant.getTShirtSize());
+            pstmt.setInt(7, participant.getParticipantId());
 
             pstmt.executeUpdate();
         } catch (SQLException e) {

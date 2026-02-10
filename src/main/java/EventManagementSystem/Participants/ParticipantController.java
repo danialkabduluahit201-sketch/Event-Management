@@ -7,6 +7,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/participants")
+@CrossOrigin(origins = "*")
 public class ParticipantController {
 
     private final ParticipantService participantService;
@@ -44,9 +45,37 @@ public class ParticipantController {
         return participant;
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public String deleteParticipant(@PathVariable int id) {
         participantService.delete(id);
         return "Participant deleted successfully";
+    }
+    @PutMapping("/{id}")
+    public Participant updateParticipant(@PathVariable int id, @RequestBody Map<String, Object> data) {
+        Participant participant = participantService.readById(id);
+
+        if (participant == null) {
+            throw new RuntimeException("Participant not found with ID: " + id);
+        }
+        if (data.containsKey("firstName")) {
+            participant.setFirstName((String) data.get("firstName"));
+        }
+        if (data.containsKey("lastName")) {
+            participant.setLastName((String) data.get("lastName"));
+        }
+        if (data.containsKey("email")) {
+            participant.setEmail((String) data.get("email"));
+        }
+        if (data.containsKey("age")) {
+            participant.setAge((Integer) data.get("age"));
+        }
+        if(data.containsKey("tShirtSize")) {
+            participant.setTShirtSize((String) data.get("tShirtSize"));
+        }
+        if(data.containsKey("gender")) {
+            participant.setGender((String) data.get("gender"));
+        }
+        participantService.update(participant);
+        return participant;
     }
 }

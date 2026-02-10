@@ -8,6 +8,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/registrations")
+@CrossOrigin(origins = "*")
 public class RegistrationController {
     private final RegistrationService registrationService;
 
@@ -77,7 +78,7 @@ public class RegistrationController {
         return registration;
     }
 
-    @PatchMapping("/{id}/cancel")
+    @PatchMapping("/{id}")
     public String cancelRegistration(@PathVariable int id) {
 
         registrationService.cancelRegistration(id);

@@ -28,7 +28,6 @@ public class Event {
         this.currentParticipants = 0;
     }
 
-    // Getters and setters
     public int getEventId() { return eventId; }
     public void setEventId(int eventId) { this.eventId = eventId; }
 
@@ -70,7 +69,7 @@ public class Event {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         Event event = (Event) obj;
-        return eventId == event.eventId; // Events are equal if they have same ID
+        return eventId == event.eventId;
     }
 
     @Override
