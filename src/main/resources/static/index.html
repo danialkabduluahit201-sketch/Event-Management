@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Event Management System</title>
+</head>
+<body>
+<h1>Event Management System</h1>
+
+<h2>Participant Management</h2>
+
+<form id="participantForm">
+    <input type="hidden" id="participantIdHidden" name="eventId">
+    <input type="text" id="firstName" placeholder="First Name" required><br>
+    <input type="text" id="lastName" placeholder="Last Name" required><br>
+    <input type="email" id="email" placeholder="Email" required><br>
+    <input type="number" id="age" placeholder="Age" required><br>
+    <select id="gender" required>
+        <option value="">Select Gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+    </select><br>
+    <select id="tShirtSize" required>
+        <option value="">Select T-Shirt Size</option>
+        <option value="S">Small</option>
+        <option value="M">Medium</option>
+        <option value="L">Large</option>
+        <option value="XL">Extra Large</option>
+        <option value="XXL">XXL</option>
+    </select><br>
+    <button type="submit">Add Participant</button>
+    <button type="button" id="participantCancelBtn" style="display:none;">Cancel</button>
+</form>
+
+<input type="text" id="participantSearch" placeholder="Search by email">
+<button onclick="searchParticipantByEmail()">Search</button>
+<button onclick="loadParticipants()">Show All</button>
+
+<div id="participantsList"></div>
+
+<hr>
+
+<h2>Event Management</h2>
+
+<form id="eventForm">
+    <input type="hidden" id="eventIdHidden" name="eventId">
+    <input type="text" id="name" placeholder="Event Name" required><br>
+    <input type="date" id="dateTime" required><br>
+    <input type="text" id="location" placeholder="Location" required><br>
+    <input type="number" id="maxCapacity" placeholder="Max Capacity" required><br>
+    <textarea id="description" placeholder="Description"></textarea><br>
+    <button type="submit">Add Event</button>
+    <button type="button" id="eventCancelBtn" style="display:none;">Cancel</button>
+</form>
+
+<div id="eventsList"></div>
+
+<hr>
+
+<h2>Registration Management</h2>
+
+<form id="registrationForm">
+    <input type="hidden" id="registrationId">
+    <select id="eventId" required>
+        <option value="">Select Event</option>
+    </select><br>
+    <select id="participantId" required>
+        <option value="">Select Participant</option>
+    </select><br>
+    <select id="ticketType" required>
+        <option value="">Select Ticket Type</option>
+        <option value="VIP">VIP</option>
+        <option value="Standard">Standard</option>
+        <option value="Early Bird">Early Bird</option>
+    </select><br>
+    <select id="status" required>
+        <option value="Confirmed">CONFIRMED</option>
+        <option value="Cancelled">CANCELLED</option>
+        <option value="Pending">PENDING</option>
+    </select><br>
+    <button type="submit">Register Participant</button>
+    <button type="button" id="registrationCancelBtn" style="display:none;">Cancel</button>
+</form>
+
+<select id="filterType" onchange="applyRegistrationFilter()">
+    <option value="all">All Registrations</option>
+    <option value="event">Filter by Event</option>
+    <option value="participant">Filter by Participant</option>
+</select>
+<select id="filterValue" style="display:none;"></select>
+
+<div id="registrationsList"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
